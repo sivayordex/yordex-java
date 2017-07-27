@@ -6,6 +6,7 @@
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
@@ -47,6 +48,17 @@
         <developerConnection>scm:git:git@bitbucket.org:yordex-sdk/yordex-java.git</developerConnection>
         <url>git@bitbucket.org:yordex-sdk/yordex-java.git</url>
     </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -185,7 +197,7 @@
                     <execution>
                         <id>attach-sources</id>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -217,8 +229,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <serverId>sonatype-nexus-staging</serverId>
+                    <serverId>ossrh</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,6 +1,6 @@
-# Yordex Java SDK [![Build Status](https://travis-ci.org/stripe/stripe-java.svg?branch=master)](https://travis-ci.org/stripe/stripe-java)
+# Yordex Java SDK
 
-You can sign up for a Yordex account at https://yordex.com.
+You can sign up for a Yordex account at [Yordex](https://yordex.com).
 
 ## Requirements
 
@@ -73,7 +73,7 @@ public class YordexCreateOrderExample {
 
 ```
 
-See the project's [Tests](https://bitbucket.com/) for more examples.
+See the project's [Tests](https://bitbucket.org/yordex-sdk/yordex-java/src/3cb965e40de1eb71addb69a8b02ca24131ac1f65/src/test/groovy/com/yordex/model/?at=integration) for more examples.
 
 ## Testing
 
