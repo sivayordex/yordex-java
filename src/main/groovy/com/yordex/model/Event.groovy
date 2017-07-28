@@ -42,4 +42,6 @@ final class Event {
     String invoiceReference
 
     Set<EventConfirmation> confirmations = new HashSet<>()
+
+    String paymentType
 }
