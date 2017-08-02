@@ -9,7 +9,7 @@ import groovy.transform.builder.Builder
 @EqualsAndHashCode
 final class EventConfirmation {
 
-    String date;
+    String date
 
-    String confirmerTraderId;
+    String confirmerType
 }
