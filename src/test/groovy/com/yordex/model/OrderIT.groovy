@@ -1,6 +1,7 @@
 package com.yordex.model
 
 import com.yordex.http.RequestOptions
+import spock.lang.Unroll
 
 class OrderIT extends BaseIT {
 
@@ -34,8 +35,29 @@ class OrderIT extends BaseIT {
             approvals.size() == 2 as Integer
     }
 
-    private Order createOrder() {
+    def "can add service to order"() {
+        given:
+            def order = createOrder()
+        when:
+            def added = Order.addService(order.id, "PAYONEER", RequestOptions.builder().apiKey(PARTNER_KEY_FOR_SELLER).build())
+        then:
+            added
+    }
 
+    @Unroll
+    def "can NOT add service to order"() {
+        given:
+            def order = createOrder()
+        when:
+            Order.addService(order.id, serviceName, RequestOptions.builder().apiKey(PARTNER_KEY_FOR_SELLER).build())
+        then:
+            def illegalArgumentException = thrown(IllegalArgumentException)
+            illegalArgumentException.message == "Service name can't be blank"
+        where:
+            serviceName << ["", null, "  "]
+    }
+
+    private Order createOrder() {
         Order newOrder = Order.builder()
                 .buyerId(BUYER_ID)
                 .sellerId(SELLER_ID)

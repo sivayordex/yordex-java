@@ -60,7 +60,7 @@ abstract class RestResource {
 
     static <T> T postRequest(String resourcePath, T body, Class<T> responseClass, RequestOptions requestOptions)
             throws ApiException, ClientException {
-        return defaultRestTemplate.doPost(Yordex.apiBaseUrl + resourcePath, body, responseClass, requestOptions, null)
+        return defaultRestTemplate.doPost(Yordex.apiBaseUrl + resourcePath, body, responseClass, requestOptions, Params.builder().build())
     }
 
     static <T> T postRequest(String resourcePath, T body, Class<T> responseClass, RequestOptions requestOptions, Params params)

@@ -83,4 +83,17 @@ final class Order extends RestResource {
 
         return approvals
     }
+
+    static boolean addService(String orderId, String serviceName, RequestOptions requestOptions) {
+        if (serviceName == null || serviceName.trim().size() == 0 as Integer) {
+            throw new IllegalArgumentException("Service name can't be blank")
+        }
+        def paramsMap = ['orderId': orderId, 'serviceName': serviceName.toUpperCase()]
+
+        def params = Params.builder().pathParams(paramsMap).build()
+
+        postRequest(Resources.ORDER_ADD_SERVICE_RESOURCE, null, Void.class, requestOptions, params)
+
+        return true
+    }
 }

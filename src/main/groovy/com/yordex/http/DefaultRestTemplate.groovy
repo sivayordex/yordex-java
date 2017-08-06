@@ -42,6 +42,7 @@ final class DefaultRestTemplate implements YordexRestTemplate {
         options = getOptions(options)
 
         HttpResponse<T> httpResponse
+
         def pathParams = params.pathParams
         def queryParams = params.queryParams
 
