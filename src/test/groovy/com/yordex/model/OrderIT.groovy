@@ -39,7 +39,8 @@ class OrderIT extends BaseIT {
         given:
             def order = createOrder()
         when:
-            def added = Order.addService(order.id, "PAYONEER", RequestOptions.builder().apiKey(PARTNER_KEY_FOR_SELLER).build())
+            def added = Order.addService(order.id, "PAYONEER", [type: "GOODS"],
+                                         RequestOptions.builder().apiKey(PARTNER_KEY_FOR_SELLER).build())
         then:
             added
     }
@@ -49,7 +50,7 @@ class OrderIT extends BaseIT {
         given:
             def order = createOrder()
         when:
-            Order.addService(order.id, serviceName, RequestOptions.builder().apiKey(PARTNER_KEY_FOR_SELLER).build())
+            Order.addService(order.id, serviceName, null, RequestOptions.builder().apiKey(PARTNER_KEY_FOR_SELLER).build())
         then:
             def illegalArgumentException = thrown(IllegalArgumentException)
             illegalArgumentException.message == "Service name can't be blank"

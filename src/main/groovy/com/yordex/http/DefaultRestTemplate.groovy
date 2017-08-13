@@ -56,6 +56,8 @@ final class DefaultRestTemplate implements YordexRestTemplate {
             httpRequestWithBody.queryString(queryParams)
         }
 
+        println httpRequestWithBody.getUrl()
+
         httpResponse = httpRequestWithBody.headers(buildHeaders(options)).body(body).asObject(responseClass)
         return handleResponse(httpResponse)
     }
