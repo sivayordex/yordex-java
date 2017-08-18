@@ -51,6 +51,10 @@ final class Order extends RestResource {
 
     String buyerCompanyTradingName
 
+    String buyerStatus
+
+    String sellerStatus
+
     Set<Event> events = new HashSet<>()
 
     Set<Approval> approvals = new HashSet<>()
