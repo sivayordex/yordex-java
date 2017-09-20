@@ -105,4 +105,13 @@ final class Order extends RestResource {
 
         return true
     }
+
+    static Order get(String orderId, RequestOptions requestOptions)
+            throws ApiException, ClientException {
+        def queryParams = ['orderId': orderId]
+        def params = Params.builder().pathParams(queryParams).build()
+        def order = getRequest(Resources.GET_ORDER_RESOURCE, Order.class, requestOptions, params)
+
+        return order
+    }
 }

@@ -45,6 +45,25 @@ class OrderIT extends BaseIT {
             added
     }
 
+    def "can get order status"() {
+        given:
+            def order = createOrder()
+            def added = Order.addService(order.id, "PAYONEER", [type: "GOODS"],
+                                         RequestOptions.builder().apiKey(PARTNER_KEY_FOR_SELLER).build())
+            RequestOptions requestOptions = RequestOptions.builder()
+                    .apiKey(PARTNER_KEY_FOR_SELLER).build()
+
+        when:
+            def orderDetails = Order.get(order.id,requestOptions)
+            System.out.println(orderDetails)
+        then:
+            orderDetails != null
+            orderDetails.id != null
+            orderDetails.buyerId == BUYER_ID
+            orderDetails.sellerId == SELLER_ID
+            orderDetails.events.size()==3
+    }
+
     @Unroll
     def "can NOT add service to order"() {
         given:

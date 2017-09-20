@@ -6,6 +6,8 @@ final class Resources {
 
     static final ORDER_RESOURCE = "/orders"
 
+    static final GET_ORDER_RESOURCE = ORDER_RESOURCE + "/{orderId}"
+
     static final ORDER_APPROVAL_RESOURCE = ORDER_RESOURCE + "/{orderId}/approvals"
 
     static final ORDER_ADD_SERVICE_RESOURCE = ORDER_RESOURCE + "/{orderId}/services?service={serviceName}"
