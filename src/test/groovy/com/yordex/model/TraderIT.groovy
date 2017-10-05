@@ -34,6 +34,19 @@ class TraderIT extends BaseIT {
             newTrader.id != null
     }
 
+    def "can create trader with partner Id"() {
+        given:
+            def trader = Trader.builder().partnerId("YORDEX").
+                    user(User.builder().email(UUID.randomUUID().toString() + "@gmail.com").password("Password123").build()).
+                    build()
+        when:
+            def newTrader = Trader.create(trader)
+        then:
+            newTrader != null
+            newTrader.id != null
+            newTrader.connectionApikey != null
+    }
+
     def "can create trader with partner id"() {
         given:
             def trader = Trader.builder().

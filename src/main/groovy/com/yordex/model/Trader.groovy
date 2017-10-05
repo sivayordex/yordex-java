@@ -27,6 +27,8 @@ final class Trader extends RestResource {
 
     String traderStatus
 
+    String connectionApikey
+
     @JsonUnwrapped
     Company getCompany() {
         return company
